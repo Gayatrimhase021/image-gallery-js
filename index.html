@@ -19,7 +19,6 @@
             align-items: center;
         }
         .btn-slide{
-            
             display: flex;
             height: 30px;
             width: 30px;
@@ -29,21 +28,18 @@
             font-size: 20px;
             cursor: pointer;
             border: 1px solid black;
-
         }
         .preview-image{
             height: 40px ;
             margin: 0 5px;
-           
-           
         }
         .gallery-preview{
             display: flex;
             overflow: scroll;
-             width: 60%;
-             margin: auto;
-             cursor: pointer;
-             border-radius: 5px;
+            width: 60%;
+            margin: auto;
+            cursor: pointer;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -51,78 +47,87 @@
 <body>
 
     <div class="gallery-container">
-        <span class="btn-slide btn-left" onclick="slideleft()" >&lt;</span>
-        
+        <span class="btn-slide btn-left" onclick="slideLeft()">&lt;</span>
 
-        
         <img class="main-img"
         src="https://images.unsplash.com/photo-1474511320723-9a56873867b5"
         alt="image 1"
         id="mainImage"
         />
-        <span class="btn-slide btn right" onclick="slideRight()">&gt;</span>
 
+        <span class="btn-slide btn-right" onclick="slideRight()">&gt;</span>
     </div>
+
     <div class="gallery-preview" id="gallery-preview"></div>
 
     <script>
+       
         const IMAGES = [
-            "https://images.unsplash.com/photo-1474511320723-9a56873867b5",
-            "https://images.unsplash.com/photo-1502082553048-f009c37129b9",
-            "https://images.unsplash.com/photo-1501706362039-c6e80948bb1a",
-            "https://images.unsplash.com/photo-1517849845537-4d257902454a"
+            {
+                url: "https://images.unsplash.com/photo-1474511320723-9a56873867b5",
+                title: "Tiger in the world",
+                description: "Wild animal"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1502082553048-f009c37129b9",
+                title: "Forest view",
+                description: "Nature scene"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1501706362039-c6e80948bb1a",
+                title: "Mountain",
+                description: "Beautiful mountain"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1517849845537-4d257902454a",
+                title: "Animal",
+                description: "Cute animal"
+            }
         ];
-        const IMAGES = [{
-            url: "https://images.unsplash.com/photo-1474511320723-9a56873867b5",
-            "title":"Tiger in the world"
-            "description"
-        }
-        ]
-        let currentIndex = 1;
+
+        let currentIndex = 0;
 
         function showCurrentIndexImage() {
             const imgElement = document.getElementById("mainImage");
-             imgElement.src = IMAGES[currentIndex];
+            imgElement.src = IMAGES[currentIndex].url; // ✅ fix
         }
-        function slideleft() {
-            if(currentIndex >0 ){
+
+        function slideLeft() {
+            if(currentIndex > 0){
                 currentIndex--;
+            } else {
+                currentIndex = IMAGES.length - 1;
             }
-            else{
-                currentIndex = IMAGES.length -1;
-            }
-                  currentIndex--;
-                  showCurrentIndexImage();
+            showCurrentIndexImage();
         }
+
         function slideRight(){
-            if(currentIndex < IMAGES.length -1){
+            if(currentIndex < IMAGES.length - 1){
                 currentIndex++;
+            } else {
+                currentIndex = 0;
             }
-                 else
-                 {
-                    currentIndex  = 0 ;
-                 }
-                  showCurrentIndexImage();
+            showCurrentIndexImage();
         }
-        functionshowImage(index){
+
+        function showImage(index){
             currentIndex = index;
             showCurrentIndexImage();
         }
 
         function createGalleryPreview(){
- 
-            const galleryPreviewContainer = document.getElementById
-            ("gallery-preview");
-
+            const galleryPreviewContainer = document.getElementById("gallery-preview");
             galleryPreviewContainer.innerHTML = "";
 
-
-
-            for(let i=0; i<IMAGES.length; i++){
-                const currentImg = IMAGES[i];
-                galleryPreviewContainer.innerHTML +=`<img src='${IMAGES}' class='preview-image' onclick='showimage(${i})'/>;`
+            for(let i = 0; i < IMAGES.length; i++){
+                galleryPreviewContainer.innerHTML += 
+                `<img src='${IMAGES[i].url}' class='preview-image' onclick='showImage(${i})'/>`;
             }
         }
+
+        
+        createGalleryPreview();
+        showCurrentIndexImage();
     </script>
 
 </body>
