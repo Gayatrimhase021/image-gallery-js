@@ -62,28 +62,7 @@
 
     <script>
        
-        const IMAGES = [
-            {
-                url: "https://images.unsplash.com/photo-1474511320723-9a56873867b5",
-                title: "Tiger in the world",
-                description: "Wild animal"
-            },
-            {
-                url: "https://images.unsplash.com/photo-1502082553048-f009c37129b9",
-                title: "Forest view",
-                description: "Nature scene"
-            },
-            {
-                url: "https://images.unsplash.com/photo-1501706362039-c6e80948bb1a",
-                title: "Mountain",
-                description: "Beautiful mountain"
-            },
-            {
-                url: "https://images.unsplash.com/photo-1517849845537-4d257902454a",
-                title: "Animal",
-                description: "Cute animal"
-            }
-        ];
+       
 
         let currentIndex = 0;
 
@@ -95,7 +74,51 @@
         function slideLeft() {
             if(currentIndex > 0){
                 currentIndex--;
-            } else {
+            } else {const IMAGES = [
+    {
+        url: "https://images.unsplash.com/photo-1474511320723-9a56873867b5",
+        title: "Tiger in the world",
+        description: "Wild animal"
+    },
+    {
+        url: "https://images.unsplash.com/photo-1502082553048-f009c37129b9",
+        title: "Forest view",
+        description: "Nature scene"
+    },
+    {
+        url: "https://images.unsplash.com/photo-1501706362039-c6e80948bb1a",
+        title: "Mountain",
+        description: "Beautiful mountain"
+    },
+    {
+       
+        url: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d",
+        title: "Dog",
+        description: "Cute dog"
+    },
+
+   
+    {
+        url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+        title: "River",
+        description: "Flowing river"
+    },
+    {
+        url: "https://images.unsplash.com/photo-1493244040629-496f6d136cc3",
+        title: "Beach",
+        description: "Relaxing beach"
+    },
+    {
+        url: "https://images.unsplash.com/photo-1518837695005-2083093ee35b",
+        title: "Bird",
+        description: "Flying bird"
+    },
+    {
+        url: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+        title: "Sunset",
+        description: "Evening sunset"
+    }
+];
                 currentIndex = IMAGES.length - 1;
             }
             showCurrentIndexImage();
